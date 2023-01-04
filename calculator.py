@@ -1,9 +1,11 @@
 #using PyQt5 to create a calculator
+#importing the necessary modules
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget,QMainWindow,QApplication,QLineEdit,QGridLayout,QPushButton,QVBoxLayout
 import sys
 from functools import partial
 error='Error'
+#class for setting up the application.
 class Pycal(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -38,7 +40,7 @@ class Pycal(QMainWindow):
     def clearDisplay(self):
         self.setDisplayText('')
 
-        
+#handling errors        
 def evaluateExpression(expression):
     try:
         result=str(eval(expression,{},{}))
@@ -46,7 +48,7 @@ def evaluateExpression(expression):
         result=error
     return result
 
-
+#controlling key clicks and screen results
 class Control:
     def __init__(self,model,view):
         self._evaluate=model
